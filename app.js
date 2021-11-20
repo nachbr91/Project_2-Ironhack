@@ -18,10 +18,10 @@ require('./config')(app);
 // Handling routes
 // app.use('/', require('./routes/home.js'));
 // app.use('/', require('./routes/auth.js'));
-// app.use('/user', require('./routes/user.js'));
+// app.use('/user', require('./routes/users.js'));
 // app.use('/drivers', require('./routes/dirvers.js'));
 // app.use('/constructors', require('./routes/constructors.js'));
-// app.use('/race-tracks', require('./routes/raceTracks.js'));
+// app.use('/grand-prix', require('./routes/raceTracks.js'));
 
 // To handle errors
 require('./error-handling')(app);
