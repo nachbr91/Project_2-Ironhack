@@ -96,17 +96,17 @@ router.post('/login', async (req, res, next) => {
   // To make log in
   req.session.loggedUser = existingUser;
   console.log('SESSION =======> ', req.session);
-  res.redirect('profile');
+  // res.redirect('profile');
 });
 
 // POST logout
-router.get('/logout', async (req, res, next) => {
-  res.clearCookie(connect.sid), { path: '/' };
+router.post('/logout', async (req, res, next) => {
+  res.clearCookie('connect.sid'), { path: '/' };
   try {
     await req.session.destroy();
     res.redirect('/');
   } catch (err) {
-    console.log('ERROR: ', err);
+    next(err);
   }
 });
 
