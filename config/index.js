@@ -24,10 +24,10 @@ module.exports = (app) => {
   app.set('views', path.join(__dirname, '..', 'views'));
   //Set the view engine to handlebars
   app.set('view engine', 'hbs');
-  // Handless access to the public folder
+  // Handles access to the public folder
   app.use(express.static(path.join(__dirname, '..', 'public')));
 
-  // Handless access to the favicon
+  // Handles access to the favicon
   // app.use(
   //   favicon(path.join(__dirname, '..', 'public', 'images', 'favicon.ico'))
   // );
