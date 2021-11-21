@@ -96,7 +96,7 @@ router.post('/login', async (req, res, next) => {
   // To make log in
   req.session.loggedUser = existingUser;
   console.log('SESSION =======> ', req.session);
-  // res.redirect('profile');
+  res.redirect('profile');
 });
 
 // POST logout
