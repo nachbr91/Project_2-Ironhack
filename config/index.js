@@ -1,18 +1,20 @@
 // Reuse this import in order to have access to the 'body' property in requests
 const express = require('express');
 
+const logger = require('morgan');
+
 // Needed when we deal with cookies
 const cookieParser = require('cookie-parser');
 
 // Serves a custom favicon on each request
 const favicon = require('serve-favicon');
 
-// Global package used to 'normalize' paths  amongst different operating systems
+// Global package used to 'normalize' paths amongst different operating systems
 const path = require('path');
 
 // Middleware configuration
 module.exports = (app) => {
-
+  app.use(logger('dev'));
   // To have access to 'body' property in the request
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));

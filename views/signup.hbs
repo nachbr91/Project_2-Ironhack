@@ -1,0 +1,20 @@
+<h2>Sign Up</h2>
+
+<form action="/signup" method="POST">
+<label>Username:</label>
+<input type="text" name="username" placeholder="username" />
+<label>Email:</label>
+<input type="email" name="email" placeholder="email@domain.com"></input>
+<label>Password:</label>
+<input type="password" name="password" minlength="8" placeholder="New password">
+<label>Repeat password:</label>
+<input type="password" name="passwordRepeat" minlength="8" placeholder="Repeat password">
+<button type="submit">Sign Up</button>
+</form>
+
+{{#if errorMsg}}
+  <p>{{errorMsg}}</p>
+{{/if}}
+{{#if createdUser}}
+<p>New user created succesfully!</p>
+{{/if}}
