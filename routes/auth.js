@@ -3,10 +3,6 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
-// Route-guard
-// const ensureLogin = require('connect-ensure-login');
-// const ensureLogout = require('connect-ensure-logout');
-
 // Model
 const User = require('../models/User.model');
 
@@ -97,7 +93,7 @@ router.post('/login', (req, res, next) => {
       }
 
       // All good, we are now logged in and `req.user` is now set
-      res.redirect('/');
+      res.redirect('/user/profile');
     });
   })(req, res, next);
 });

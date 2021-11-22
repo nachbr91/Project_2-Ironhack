@@ -3,12 +3,9 @@
   <p>{{errorMsg}}</p>
 {{/if}}
 <form action="/login" method="POST">
-  <label>Username:</label>
-  <input type="text" name="username" placeholder="Your username" />
+  <label>Email:</label>
+  <input type="email" name="email" placeholder="Your email" />
   <label>Password:</label>
   <input type="password" name="password" placeholder="Your password" />
   <button type="submit">Log In</button>
 </form>
-{{!-- {{#if errorMsg}}
-  <p>{{errorMsg}}</p>
-{{/if}} --}}
