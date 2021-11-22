@@ -10,8 +10,8 @@ const app = express();
 const hbs = require('hbs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const flash = require('connect-flash');
 
+const flash = require('connect-flash');
 app.use(flash());
 
 // Middleware for session/cookie & passport

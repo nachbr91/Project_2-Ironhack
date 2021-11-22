@@ -1,6 +1,11 @@
+// Variables
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const passport = require('passport')
+const passport = require('passport');
+
+// Route-guard
+// const ensureLogin = require('connect-ensure-login');
+// const ensureLogout = require('connect-ensure-logout');
 
 // Model
 const User = require('../models/User.model');
@@ -14,6 +19,12 @@ router.get('/signup', (req, res, next) => {
 router.get('/login', (req, res, next) => {
   res.render('login');
 });
+
+// GET log in passport
+router.get('/login', (req, res, next) => {
+  res.render('login', { errorMsg: req.flash('Incorrect email or password') });
+});
+
 // POST sign up new user
 router.post('/signup', async (req, res, next) => {
   const { username, password, email, repeatPassword } = req.body;
@@ -99,31 +110,41 @@ router.post('/signup', async (req, res, next) => {
 //   res.redirect('profile');
 // });
 
-// // POST logout
-// router.post('/logout', async (req, res, next) => {
-//   res.clearCookie('connect.sid'), { path: '/' };
-//   try {
-//     await req.session.destroy();
-//     res.redirect('/');
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+// POST log in user
+// router.post(
+//   '/login',
+//   passport.authenticate('local', {
+//     successRedirect: '/',
+//     failureRedirect: 'login',
+//     failureFlash: true
+//   })
+// );
 
-// GET passport log in user
-router.get('/login', (req, res, next) => {
-  res.render('login', {errorMsg: req.flash('error')});
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, theUser, failureDetails) => {
+    if (err) {
+      // Something went wrong authenticating user
+      return next(err);
+    }
+
+    if (!theUser) {
+      // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
+      res.render('login', { errorMsg: 'Incorrect username or password' });
+      return;
+    }
+
+    // save user in session: req.user
+    req.login(theUser, err => {
+      if (err) {
+        // Session save went bad
+        return next(err);
+      }
+
+      // All good, we are now logged in and `req.user` is now set
+      res.redirect('/');
+    });
+  })(req, res, next);
 });
-
-// POST passport log in user
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-  })
-);
 
 // POST logout
 router.post('/logout', async (req, res, next) => {
