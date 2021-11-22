@@ -6,6 +6,9 @@ const passport = require('passport');
 // Model
 const User = require('../models/User.model');
 
+// // Middleware for route guard
+// const { isLoggedIn } = require('../middleware/route-guard');
+
 //GET sign up
 router.get('/signup', (req, res, next) => {
   res.render('signup');
@@ -75,24 +78,18 @@ router.post('/signup', async (req, res, next) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     if (err) {
-      // Something went wrong authenticating user
       return next(err);
     }
 
     if (!theUser) {
-      // Unauthorized, `failureDetails` contains the error messages from our logic in "LocalStrategy" {message: '…'}.
       res.render('login', { errorMsg: 'Incorrect username or password' });
       return;
     }
 
-    // save user in session: req.user
-    req.login(theUser, err => {
+    req.login(theUser, (err) => {
       if (err) {
-        // Session save went bad
         return next(err);
       }
-
-      // All good, we are now logged in and `req.user` is now set
       res.redirect('/user/profile');
     });
   })(req, res, next);

@@ -1,0 +1,32 @@
+<h1>Add a new driver:</h1>
+
+{{#if errorMsg}}
+  <p>{{errorMsg}}</p>
+{{/if}}
+
+<form action='/drivers/create' method='post'>
+
+  <label>Name:</label>
+  <input type='text' name='name' placeholder="Driver's name" required />
+
+  <label>Country:</label>
+  <input type='text' name='country' placeholder="Driver's country" required />
+
+  <label>Number:</label>
+  <input type='number' name='number' placeholder="Driver's number" required />
+
+  <label>Podiums:</label>
+  <input type='number' name='podiums' placeholder="Driver's podiums" required />
+
+  <label>Won races:</label>
+  <input type='number' name='wonRaces' placeholder='Number of won races' required />
+
+  <label>World Championships:</label>
+  <input type='number' name='worldChampionships' placeholder='Number of World Championships' required />
+
+  <label>Image:</label>
+  <input type='text' name='imageUrl' placeholder="Driver's image" required />
+
+  <button type="submit">Create driver</button>
+  
+</form>

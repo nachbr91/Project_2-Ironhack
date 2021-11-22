@@ -3,11 +3,13 @@ const {Schema,  model} = require('mongoose');
 const driverSchema = new Schema(
   {
     name: {type: String, required: true},
-    country: {type: String},
-    podiums: {type: Number},
-    wonRaces: {type: Number},
-    worldChampionships: {type: Number},
-    imageUrl: {type: String}
+    country: {type: String, required: true},
+    number: {type: Number, required: true},
+    team: [{ type: Schema.Types.ObjectId, ref: 'Driver' }],
+    podiums: {type: Number, required: true},
+    wonRaces: {type: Number, required: true},
+    worldChampionships: {type: Number, required: true},
+    imageUrl: {type: String, required: true}
   },
   {timestamps: true}
 );
