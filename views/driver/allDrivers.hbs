@@ -1,0 +1,9 @@
+<h2>Drivers</h2>
+
+{{#each showDrivers}}
+<ul>
+  <li>{{this.name}} {{this.lastName}}</li>
+  {{!-- <img src="{{this.imageUrl}}" alt="{{this.name}} {{this.lastName}}">  --}}
+  <a href="/drivers/{{this.id}}">See details</a>
+</ul>
+{{/each}}

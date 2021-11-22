@@ -1,0 +1,36 @@
+<h1>Add a new team:</h1>
+
+{{#if errorMsg}}
+  <p>{{errorMsg}}</p>
+{{/if}}
+
+<form action='/teams/create' method='post'>
+
+  <label>Team name:</label>
+  <input type='text' name='teamName' placeholder='Team name' />
+
+  <label>Base:</label>
+  <input type='text' name='base' placeholder='Base' />
+
+  <label>Team Chief:</label>
+  <input type='text' name='teamChief' placeholder='Team Chief' />
+
+  <label>Frist Team Entry:</label>
+  <input type='number' name='firstTeamEntry' placeholder='First Team Entry' />
+  
+  <label>World Championships:</label>
+  <input type='number' name='worldChampionships' placeholder='Number of World Championships' />
+  
+  <label>Drivers:</label>
+    <select name='drivers' id='drivers' multiple>
+    {{#each loadDrivers}}
+      <option value='{{this.id}}'>{{this.name}} {{this.lastName}}</option>
+    {{/each}}
+  </select>
+
+  <label>Logo:</label>
+  <input type='text' name='imageUrl' placeholder="Team logo" />
+
+  <button type="submit">Create team</button>
+  
+</form>

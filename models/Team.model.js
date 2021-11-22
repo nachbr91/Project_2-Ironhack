@@ -1,11 +1,11 @@
 const { Schema, model } = require('mongoose');
 
-const constructorSchema = new Schema(
+const teamSchema = new Schema(
   {
     teamName: { type: String, required: true },
     base: { type: String },
     teamChief: { type: String },
-    firstTeamEntry: { type: String },
+    firstTeamEntry: { type: Number },
     worldChampionships: { type: Number },
     imageUrl: { type: String },
     drivers: [{ type: Schema.Types.ObjectId, ref: 'Driver' }],
@@ -13,6 +13,6 @@ const constructorSchema = new Schema(
   { timestamps: true }
 );
 
-const Constructor = model('Constructor', constructorSchema);
+const Team = model('Team', teamSchema);
 
-module.exports = Constructor;
+module.exports = Team;
