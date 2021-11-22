@@ -3,7 +3,11 @@
 <p>{{lastName}}</p>
 <p>Country: {{country}}</p>
 <p>Number: {{number}}</p>
-<p>Team: {{team}}</p>
+{{#if team }}
+  {{#each team}}
+    <p>Team: {{this.teamName}}</p>
+  {{/each}}
+{{/if}}
 <p>Won Races: {{wonRaces}}</p>
 <p>World Championships: {{worldChampionships}}</p>
 <img src="{{imageUrl}}" alt="{{name}} {{lastName}}" />
