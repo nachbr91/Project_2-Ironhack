@@ -8,9 +8,15 @@ require('./db');
 const express = require('express');
 const app = express();
 const hbs = require('hbs');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash');
 
-// Middleware for session/cookie
+app.use(flash());
+
+// Middleware for session/cookie & passport
 require('./config/session.config')(app);
+require('./config/passport.session')(app);
 
 // This function is getting exported from the config folder. It runs most middlewares
 require('./config')(app);
@@ -22,6 +28,9 @@ app.use('/', require('./routes/auth.js'));
 // app.use('/drivers', require('./routes/dirvers.js'));
 // app.use('/constructors', require('./routes/constructors.js'));
 // app.use('/grand-prix', require('./routes/raceTracks.js'));
+
+// To display errorMsg when login or logout with passport
+// app.use(flash());
 
 // To handle errors
 require('./error-handling')(app);

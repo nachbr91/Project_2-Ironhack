@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
+const passport = require('passport')
 
 // Model
 const User = require('../models/User.model');
@@ -13,7 +14,6 @@ router.get('/signup', (req, res, next) => {
 router.get('/login', (req, res, next) => {
   res.render('login');
 });
-
 // POST sign up new user
 router.post('/signup', async (req, res, next) => {
   const { username, password, email, repeatPassword } = req.body;
@@ -69,35 +69,61 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-// POST log in user
-router.post('/login', async (req, res, next) => {
-  const { username, password } = req.body;
+// // POST log in user
+// router.post('/login', async (req, res, next) => {
+//   const { username, password } = req.body;
 
-  // To check that fields are not empty
-  if (!username || !password) {
-    res.render('login', { errorMsg: 'Please, fill all inputs' });
-    return;
-  }
+//   // To check that fields are not empty
+//   if (!username || !password) {
+//     res.render('login', { errorMsg: 'Please, fill all inputs' });
+//     return;
+//   }
 
-  // To check if user exist
-  const existingUser = await User.findOne({ username: username });
-  if (!existingUser) {
-    res.render('login', { errorMsg: 'User does not exist' });
-    return;
-  }
+//   // To check if user exist
+//   const existingUser = await User.findOne({ username: username });
+//   if (!existingUser) {
+//     res.render('login', { errorMsg: 'User does not exist' });
+//     return;
+//   }
 
-  // To check is password is correct
-  const passwordMatch = await bcrypt.compare(password, existingUser.password);
-  if (!passwordMatch) {
-    res.render('login', { errorMsg: 'Incorrect password' });
-    return;
-  }
+//   // To check is password is correct
+//   const passwordMatch = await bcrypt.compare(password, existingUser.password);
+//   if (!passwordMatch) {
+//     res.render('login', { errorMsg: 'Incorrect password' });
+//     return;
+//   }
 
-  // To make log in
-  req.session.loggedUser = existingUser;
-  console.log('SESSION =======> ', req.session);
-  res.redirect('profile');
+//   // To make log in
+//   req.session.loggedUser = existingUser;
+//   console.log('SESSION =======> ', req.session);
+//   res.redirect('profile');
+// });
+
+// // POST logout
+// router.post('/logout', async (req, res, next) => {
+//   res.clearCookie('connect.sid'), { path: '/' };
+//   try {
+//     await req.session.destroy();
+//     res.redirect('/');
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// GET passport log in user
+router.get('/login', (req, res, next) => {
+  res.render('login', {errorMsg: req.flash('error')});
 });
+
+// POST passport log in user
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  })
+);
 
 // POST logout
 router.post('/logout', async (req, res, next) => {
