@@ -20,7 +20,6 @@
   "homepage": "https://github.com/nachbr91/Project_2-Ironhack#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^10.0.0",

@@ -11,9 +11,6 @@ const hbs = require('hbs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const flash = require('connect-flash');
-app.use(flash());
-
 // Middleware for session/cookie & passport
 require('./config/session.config')(app);
 require('./config/passport.session')(app);

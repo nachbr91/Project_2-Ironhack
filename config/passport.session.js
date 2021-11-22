@@ -15,7 +15,7 @@ module.exports = (app) => {
 
   passport.use(
     new LocalStrategy(
-      // { passReqToCallback: true },
+      // { passReqToCallback: true }, // Needs to be commented, if not passport method doesn't works
       {
         usernameField: 'username', // by default
         passwordField: 'password', // by default

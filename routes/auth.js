@@ -20,11 +20,6 @@ router.get('/login', (req, res, next) => {
   res.render('login');
 });
 
-// GET log in passport
-router.get('/login', (req, res, next) => {
-  res.render('login', { errorMsg: req.flash('Incorrect email or password') });
-});
-
 // POST sign up new user
 router.post('/signup', async (req, res, next) => {
   const { username, password, email, repeatPassword } = req.body;
@@ -80,46 +75,7 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-// // POST log in user
-// router.post('/login', async (req, res, next) => {
-//   const { username, password } = req.body;
-
-//   // To check that fields are not empty
-//   if (!username || !password) {
-//     res.render('login', { errorMsg: 'Please, fill all inputs' });
-//     return;
-//   }
-
-//   // To check if user exist
-//   const existingUser = await User.findOne({ username: username });
-//   if (!existingUser) {
-//     res.render('login', { errorMsg: 'User does not exist' });
-//     return;
-//   }
-
-//   // To check is password is correct
-//   const passwordMatch = await bcrypt.compare(password, existingUser.password);
-//   if (!passwordMatch) {
-//     res.render('login', { errorMsg: 'Incorrect password' });
-//     return;
-//   }
-
-//   // To make log in
-//   req.session.loggedUser = existingUser;
-//   console.log('SESSION =======> ', req.session);
-//   res.redirect('profile');
-// });
-
-// POST log in user
-// router.post(
-//   '/login',
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: 'login',
-//     failureFlash: true
-//   })
-// );
-
+// POST log in
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     if (err) {
