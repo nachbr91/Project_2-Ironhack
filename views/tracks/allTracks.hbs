@@ -1,0 +1,9 @@
+<h2>Grand Prix</h2>
+
+{{#each showTracks}}
+<ul>
+  <li>{{this.name}}</li>
+  <img src="{{this.imageUrl}}" alt="{{this.name}}" /> 
+  <a href="/grand-prix/{{this.id}}">See details</a>
+</ul>
+{{/each}}

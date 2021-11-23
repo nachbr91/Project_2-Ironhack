@@ -12,7 +12,7 @@ const { isLoggedIn } = require('../middleware/route-guard');
 router.get('/allDrivers', isLoggedIn, async (req, res, next) => {
   try {
     const showDrivers = await Driver.find();
-    res.render('driver/allDrivers.hbs', {
+    res.render('driver/allDrivers', {
       showDrivers: showDrivers,
     });
   } catch (err) {
@@ -22,14 +22,14 @@ router.get('/allDrivers', isLoggedIn, async (req, res, next) => {
 
 // GET create drivers page
 router.get('/create', isLoggedIn, (req, res, next) => {
-  res.render('driver/createDrivers.hbs');
+  res.render('driver/createDrivers');
 });
 
 // GET load teams
 router.get('/create', isLoggedIn, async (req, res, next) => {
   try {
     const loadTeams = await Team.find();
-    res.render('driver/createDriver', {
+    res.render('driver/createDrivers', {
       loadTeams: loadTeams,
     })
   } catch (err) {
@@ -79,7 +79,8 @@ router.post('/create', isLoggedIn, async (req, res, next) => {
     });
     res.redirect('/drivers/create');
   } catch (err) {
-    res.render('./driver/createDrivers', {errorMsg: 'You need to fill all inputs'});
+    console.log('ERROR: ', err);
+    // res.render('./driver/createDrivers', {errorMsg: 'You need to fill all inputs'});
   }
 });
 
@@ -88,11 +89,10 @@ router.post('/:_id', async (req, res, next) => {
   const {name, lastName, country, number, team, podiums, wonRaces, worldChampionships, imageUrl} = req.body;
   try {
     const updateDriver = await Driver.findByIdAndUpdate(req.params._id, {name, lastName, country, number, team, podiums, wonRaces, worldChampionships, imageUrl}, {new: true});
-    res.redirect(`${req.params._id}`); // Redirigir a driver details
+    res.redirect(`${req.params._id}`); // Redirect to driver details
   } catch (err) {
     console.log('Error:', err);
   };
 });
-
 
 module.exports = router;

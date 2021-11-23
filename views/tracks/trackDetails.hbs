@@ -1,0 +1,15 @@
+<h2>Grand Prix details:</h2>
+<p>{{name}}</p>
+<p>Circuit name: {{circuitName}}</p>
+<p>Laps: {{laps}}</p>
+<p>Circuit Length: {{circuitLength}}</p>
+<p>Lap record: {{lapRecord}}</p>
+<img src="{{imageUrl}}" alt="{{circuitName}}" />
+
+<form action="/grand-prix/{{id}}/delete" method="post">
+<button type="submit">Delete Grand Prix</button>
+</form>
+
+<form action="/grand-prix/{{id}}/edit" method="get">
+<button type="submit">Edit Grand Prix</button>
+</form>

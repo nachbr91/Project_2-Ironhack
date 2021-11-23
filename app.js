@@ -24,10 +24,7 @@ app.use('/', require('./routes/auth.js'));
 app.use('/user', require('./routes/users.js'));
 app.use('/drivers', require('./routes/drivers.js'));
 app.use('/teams', require('./routes/teams.js'));
-// app.use('/grand-prix', require('./routes/raceTracks.js'));
-
-// To display errorMsg when login or logout with passport
-// app.use(flash());
+app.use('/grand-prix', require('./routes/raceTracks.js'));
 
 // To handle errors
 require('./error-handling')(app);
