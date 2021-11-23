@@ -23,7 +23,7 @@ router.get('/allDrivers', isLoggedIn, async (req, res, next) => {
 // GET create drivers page
 router.get('/create', isLoggedIn, async (req, res, next) => {
   const editTeam = await Team.find();
-  res.render('driver/createDrivers', editTeam);
+  res.render('driver/createDrivers', {editTeam});
 });
 
 // GET load teams
