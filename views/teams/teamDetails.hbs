@@ -1,3 +1,9 @@
+<form action='/teams/{{id}}/edit' method='GET'>
+  <button type='submit'>Edit team</button>
+</form>
+<form action='/teams' method='GET'>
+  <button type='submit'>Go back</button>
+</form>
 <h2>Team details:</h2>
 <p>{{this.teamName}}</p>
 <p>Base: {{base}}</p>
@@ -14,10 +20,6 @@
 <p>World Championships: {{worldChampionships}}</p>
 <img src='{{imageUrl}}' alt='{{teamName}}' />
 
-<form action='/teams/{{id}}/delete' method='POST'>
+<form action='/teams/{{id}}/delete' method='post'>
   <button type='submit'>Delete team</button>
-</form>
-
-<form action='/teams/{{id}}/edit' method='GET'>
-  <button type='submit'>Edit team</button>
 </form>

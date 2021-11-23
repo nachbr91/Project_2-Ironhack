@@ -10,7 +10,7 @@
   <input type='text' name='name' placeholder="Driver's name" />
 
   <label>Last Name:</label>
-  <input type='text' name='lastName' placeholder="Driver's lasr name" />
+  <input type='text' name='lastName' placeholder="Driver's last name" />
 
   <label>Country:</label>
   <input type='text' name='country' placeholder="Driver's country" />
@@ -19,8 +19,8 @@
   <input type='number' name='number' placeholder="Driver's number" />
 
   <label>Team:</label>
-    <select name='team' id='teams' multiple>
-    {{#each editTeam}}
+  <select name='team' id='teams'>
+    {{#each chooseTeam}}
       <option value='{{this.id}}'>{{this.teamName}}</option>
     {{/each}}
   </select>
@@ -32,11 +32,15 @@
   <input type='number' name='wonRaces' placeholder='Number of won races' />
 
   <label>World Championships:</label>
-  <input type='number' name='worldChampionships' placeholder='Number of World Championships' />
+  <input
+    type='number'
+    name='worldChampionships'
+    placeholder='Number of World Championships'
+  />
 
   <label>Image:</label>
   <input type='text' name='imageUrl' placeholder="Driver's image" />
 
-  <button type="submit">Create driver</button>
-  
+  <button type='submit'>Create driver</button>
+
 </form>

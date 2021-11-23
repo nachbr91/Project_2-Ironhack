@@ -92,4 +92,14 @@ router.post('/:_id', async (req, res, next) => {
   };
 });
 
+// POST delete team
+router.post('/:id/delete', isLoggedIn, async (req, res) => {
+  try {
+    const deleteTeam = await Team.findByIdAndDelete(req.params.id);
+    res.redirect('/teams');
+  } catch (err) {
+    console.log('ERROR: ', err);
+  }
+});
+
 module.exports = router;

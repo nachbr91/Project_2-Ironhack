@@ -63,7 +63,7 @@ router.get('/:id/edit', isLoggedIn, async (req, res, next) => {
 router.post('/create', isLoggedIn, async (req, res, next) => {
   const { name, lastName, country, number, team, podiums, wonRaces, worldChampionships, imageUrl } = req.body;
   if (!name || !lastName || !country || !number || !podiums || !wonRaces || !worldChampionships || !imageUrl) {
-    res.render('driver/createDrivers', { errorMsg: 'You need to fill all inputs' });
+    res.render('driver/createDrivers', {editTeam, errorMsg: 'You need to fill all inputs' });
     return;
   }
   try {
@@ -81,7 +81,6 @@ router.post('/create', isLoggedIn, async (req, res, next) => {
     res.redirect('/drivers/create');
   } catch (err) {
     console.log('ERROR: ', err);
-    // res.render('./driver/createDrivers', {errorMsg: 'You need to fill all inputs'});
   }
 });
 
@@ -94,6 +93,16 @@ router.post('/:_id', async (req, res, next) => {
   } catch (err) {
     console.log('Error:', err);
   };
+});
+
+// POST delete driver
+router.post('/:id/delete', isLoggedIn, async (req, res) => {
+  try {
+    const deleteDriver = await Driver.findByIdAndDelete(req.params.id);
+    res.redirect('/drivers/allDrivers');
+  } catch (err) {
+    console.log('ERROR: ', err);
+  }
 });
 
 module.exports = router;

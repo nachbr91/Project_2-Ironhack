@@ -21,7 +21,7 @@ router.get('/', isLoggedIn,  async (req, res) => {
 
 // GET create new Grand Prix
 router.get('/create', isLoggedIn, (req, res) => {
-  res.render('tracks/createTracks');
+  res.render('tracks/createTrack');
 });
 
 // GET Grand Prix details
@@ -48,7 +48,7 @@ router.get('/:id/edit', isLoggedIn, async (req, res) => {
 router.post('/create', isLoggedIn, async (req, res) => {
   const {name, circuitName, laps, circuitLength, lapRecord, imageUrl} = req.body;
   if (!name, !circuitName, !laps, !circuitLength, !lapRecord, !imageUrl) {
-    res.render('tracks/create', {errorMsg: 'You need to fill all inputs'});
+    res.render('tracks/createTrack', {errorMsg: 'You need to fill all inputs'});
   }
   try {
     const createTrack = await Race.create({
@@ -59,7 +59,7 @@ router.post('/create', isLoggedIn, async (req, res) => {
       lapRecord,
       imageUrl,
     });
-    res.redirect('/tracks/allTracks');
+    res.redirect('/grand-prix');
   } catch (err) {
     console.log('ERROR: ', err);
   }
@@ -71,6 +71,16 @@ router.post('/:_id', async (req, res) => {
   try{
     const updateTrack = await Race.findByIdAndUpdate(req.params._id, {name, circuitName, laps, circuitLength, lapRecord, imageUrl}, {new: true});
     res.redirect(`${req.params._id}`) // Redirect to Grand Prix details
+  } catch (err) {
+    console.log('ERROR: ', err);
+  }
+});
+
+// POST delete Grand Prix
+router.post('/:id/delete', isLoggedIn, async (req, res) => {
+  try {
+    const deleteTrack = await Race.findByIdAndDelete(req.params.id);
+    res.redirect('/grand-prix');
   } catch (err) {
     console.log('ERROR: ', err);
   }

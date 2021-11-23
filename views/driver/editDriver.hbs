@@ -14,7 +14,7 @@
   <input type='number' name='number' value="{{editDriver.number}}" />
 
   <label>Team:</label>
-    <select name='team' id='teams' multiple>
+    <select name='team' id='teams'>
     {{#each editTeam}}
       <option value='{{this.id}}'>{{this.teamName}}</option>
     {{/each}}

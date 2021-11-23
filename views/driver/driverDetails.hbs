@@ -1,3 +1,9 @@
+<form action="/drivers/allDrivers" method="GET">
+<button type="submit">Back to all drivers</button>
+</form>
+<form action="/drivers/{{id}}/edit" method="GET">
+<button type="submit">Edit driver</button>
+</form>
 <h2>Driver details:</h2>
 <p>{{name}}</p>
 <p>{{lastName}}</p>
@@ -8,14 +14,11 @@
     <p>Team: {{this.teamName}}</p>
   {{/each}}
 {{/if}}
+<p>Podiums: {{podiums}}</p>
 <p>Won Races: {{wonRaces}}</p>
 <p>World Championships: {{worldChampionships}}</p>
 <img src="{{imageUrl}}" alt="{{name}} {{lastName}}" />
 
 <form action="/drivers/{{id}}/delete" method="POST">
 <button type="submit">Delete driver</button>
-</form>
-
-<form action="/drivers/{{id}}/edit" method="GET">
-<button type="submit">Edit driver</button>
 </form>
