@@ -20,8 +20,8 @@
 
   <label>Team:</label>
     <select name='team' id='teams' multiple>
-    {{#each loadTeams}}
-      <option value='{{this.id}}'>{{this.name}}</option>
+    {{#each editTeam}}
+      <option value='{{this.id}}'>{{this.teamName}}</option>
     {{/each}}
   </select>
 

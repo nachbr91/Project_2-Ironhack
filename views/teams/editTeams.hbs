@@ -1,0 +1,31 @@
+<h2>Edit team details</h2>
+<form action='/teams/{{editTeam.id}}' method='post'>
+
+  <label>Team name:</label>
+  <input type='text' name='teamName' value="{{editTeam.teamName}}" />
+
+  <label>Base:</label>
+  <input type='text' name='base' value="{{editTeam.base}}" />
+
+  <label>Team Chief:</label>
+  <input type='text' name='teamChief' value="{{editTeam.teamChief}}" />
+
+  <label>Drivers:</label>
+  <select name='drivers' id='teams' multiple>
+    {{#each editDriver}}
+      <option value='{{this.id}}'>{{this.name}} {{this.lastName}}</option>
+    {{/each}}
+  </select>
+
+  <label>First team entry:</label>
+  <input type='number' name='firstTeamEntry' value="{{editTeam.firstTeamEntry}}" />
+
+  <label>World Championships:</label>
+  <input type='number' name='worldChampionships' value="{{editTeam.worldChampionships}}" />
+
+  <label>Image:</label>
+  <input type='text' name='imageUrl' value="{{editTeam.imageUrl}}" />
+
+  <button type="submit">Update!</button>
+
+</form>

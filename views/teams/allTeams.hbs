@@ -1,0 +1,9 @@
+<h2>Formula 1 Teams</h2>
+
+{{#each showTeams}}
+<ul>
+  <li>{{this.teamName}}</li>
+  {{!-- <img src="{{this.imageUrl}}" alt="{{this.teamName}}" />  --}}
+  <a href="/teams/{{this.id}}">See details</a>
+</ul>
+{{/each}}
