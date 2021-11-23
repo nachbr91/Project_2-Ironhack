@@ -78,7 +78,7 @@ router.post('/create', isLoggedIn, async (req, res, next) => {
       worldChampionships,
       imageUrl,
     });
-    res.redirect('/drivers/create');
+    res.redirect('/drivers/allDrivers');
   } catch (err) {
     console.log('ERROR: ', err);
   }
