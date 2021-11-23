@@ -13,4 +13,9 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
   res.render('profile', {username} )
 })
 
+// // GET favorite page
+// router.get('/favorite', isLoggedIn, (req, res) => {
+//   res.render('favoriteItems')
+// })
+
 module.exports = router;

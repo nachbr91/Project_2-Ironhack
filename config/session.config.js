@@ -2,8 +2,6 @@ const session = require('express-session');
 
 const MongoStore = require('connect-mongo');
 
-// const mongoose = require('mongoose');
-
 module.exports = (app) => {
   app.set('trust proxy', 1);
   app.use(

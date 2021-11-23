@@ -1,9 +1,22 @@
-<h2>Drivers</h2>
-
-{{#each showDrivers}}
-<ul>
-  <li>{{this.name}} {{this.lastName}}</li>
-  {{!-- <img src="{{this.imageUrl}}" alt="{{this.name}} {{this.lastName}}">  --}}
-  <a href="/drivers/{{this.id}}">See details</a>
-</ul>
-{{/each}}
+<div class='container'>
+  <h2>Drivers</h2>
+  <div class='row row-cols-1 row-cols-md-3 g-4'>
+    {{#each showDrivers}}
+      <div class='col'>
+        <img src='{{this.imageUrl}}' alt='{{this.name}} {{this.lastName}}' class="card-img-top" />
+        <div class='card-body text-center'>
+          <h5 class='card-tittle'><span class="driver-number">{{this.number}}</span> {{this.name}}
+            <span class='driver-lastName'>{{this.lastName}}</span></h5>
+          <form action='/drivers/{{this.id}}' method='get'>
+            <button
+              type='submit'
+              class='btn btn-primary'
+              data-toggle='modal'
+              data-target='#{{this.id}}'
+            >More info</button>
+          </form>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

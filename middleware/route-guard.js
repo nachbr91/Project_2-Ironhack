@@ -1,6 +1,6 @@
 // Middleware route-guard
 
-// Checks if the user is Logged in when trying to acces a specify page
+// Checks if user is Logged in when trying to acces a specific page
 const isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
