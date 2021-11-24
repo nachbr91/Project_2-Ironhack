@@ -100,3 +100,14 @@
 .go-back {
   margin-top: 10px;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+    background: #35363a;
+  }
+
+  body a {
+    color: #809fff;
+  }
+}
