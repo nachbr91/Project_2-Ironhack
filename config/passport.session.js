@@ -39,4 +39,10 @@ module.exports = (app) => {
   );
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // Middleware to change dinamically login/logout buttons
+  app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.isAuthenticated();
+    next();
+  });
 };

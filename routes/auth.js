@@ -7,7 +7,7 @@ const passport = require('passport');
 const User = require('../models/User.model');
 
 // // Middleware for route guard
-// const { isLoggedIn } = require('../middleware/route-guard');
+const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 
 //GET sign up
 router.get('/signup', (req, res, next) => {
@@ -17,6 +17,14 @@ router.get('/signup', (req, res, next) => {
 // GET log in
 router.get('/login', (req, res, next) => {
   res.render('login');
+});
+
+// GET logout
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.clearCookie('connect.sid'), { path: '/' };
+  req.session.destroy();
+  res.redirect('/');
 });
 
 // POST sign up new user
@@ -74,7 +82,7 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-// POST log in
+// POST log in with passport
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     if (err) {
@@ -90,6 +98,7 @@ router.post('/login', (req, res, next) => {
       if (err) {
         return next(err);
       }
+      console.log(req.session.passport.user)
       res.redirect('/user/profile');
     });
   })(req, res, next);
