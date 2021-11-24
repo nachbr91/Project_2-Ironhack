@@ -1,55 +1,30 @@
-<div class="container justify-content-center">
-  <div class="card mb-3" style="max-width: 1200px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{imageUrl}}" class="img-fluid rounded-start" alt="{{name}} {{lastName}}">
+<div class="driver-details-card">
+  <div class="card-details" style="width: 22rem;">
+    <img src="{{imageUrl}}" class="card-img-top" alt="{{name}} {{lastName}}">
+    <div class="card-body">
+      <h5 class="card-title"><span class="driver-number">{{number}}</span> {{name}} <span class="driver-lastName">{{lastName}}</span></h5>
+      <p>Country: {{country}}</p>
+      {{#if team}}
+        {{#each team}}
+          <p>Team: {{this.teamName}}</p>
+        {{/each}}
+      {{/if}}
+      <p>Podiums: {{podiums}}</p>
+      <p>Won Races: {{wonRaces}}</p>
+      <p>World Championships: {{worldChampionships}}</p>
+      <div class="driverDetails-buttons">
+        <form action="/drivers/{{id}}/edit" method="get">
+          <button class="btn btn-primary" type="submit">Edit driver</button>
+        </form>
+        <form action="/drivers/{{id}}/delete" method="post">
+          <button class="btn btn-danger" type="submit">Delete driver</button>
+        </form>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><span>{{number}}</span> {{name}} {{lastName}}</h5>
-          <p class="card-text">Country: {{country}}</p>
-          {{#if team }}
-            {{#each team}}
-              <p>Team: {{this.teamName}}</p>
-            {{/each}}
-          {{/if}}
-          <p class="card-text">Podiums: {{podiums}}</p>
-          <p class="card-text">Won races: {{wonRaces}}</p>
-          <p class="card-text">World Championships: {{worldChampionships}}</p>
-          <form action="/drivers/{{id}}/edit" method="GET">
-            <button class="btn btn-light" type="submit">Edit driver</button>
-          </form>
-          <form action="/drivers/{{id}}/delete" method="POST">
-            <button class="btn btn-danger" type="submit">Delete driver</button>
-          </form>
-        </div>
+      <div class="go-back-button">
+        <form action="/drivers/allDrivers" method="get">
+            <button class="btn btn-secondary go-back" type="submit">Return to drivers page</button>
+        </form>
       </div>
     </div>
-  </div>
+  </div>  
 </div>
-
-{{!-- 
-<form action="/drivers/allDrivers" method="GET">
-<button type="submit">Back to all drivers</button>
-</form>
-<form action="/drivers/{{id}}/edit" method="GET">
-<button type="submit">Edit driver</button>
-</form>
-<h2>Driver details:</h2>
-<p>{{name}}</p>
-<p>{{lastName}}</p>
-<p>Country: {{country}}</p>
-<p>Number: {{number}}</p>
-{{#if team }}
-  {{#each team}}
-    <p>Team: {{this.teamName}}</p>
-  {{/each}}
-{{/if}}
-<p>Podiums: {{podiums}}</p>
-<p>Won Races: {{wonRaces}}</p>
-<p>World Championships: {{worldChampionships}}</p>
-<img src="{{imageUrl}}" alt="{{name}} {{lastName}}" />
-
-<form action="/drivers/{{id}}/delete" method="POST">
-<button type="submit">Delete driver</button>
-</form> --}}
