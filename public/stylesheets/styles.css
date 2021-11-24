@@ -6,6 +6,7 @@
 
 .navbar {
   background-color: rgb(225, 11, 15);
+  padding: 0.3rem 0;
 }
 
 .navbar-light .navbar-brand {
@@ -32,6 +33,48 @@
   padding: 0;
   margin: 0;
 }
+
+/* home */
+
+.background-img {
+  width: 100vw;
+  height: 83vh;
+  background-image: url('/images/f1-background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center
+}
+
+.container h1 {
+  color: #eee;
+}
+
+footer{
+  background-color: #35363a;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  height: 23px;
+  padding-top: 5px;
+}
+
+.rrss {
+  display: flex;
+  justify-content: center;
+}
+
+.footer h2 {
+  font-size: 1.2rem;
+  color:rgb(255, 255, 255);
+}
+
+.footer-logos img {
+  height: 45px;
+  width: auto;
+  padding-right: 20px;
+} 
 
 /* allDrivers */
 
@@ -119,7 +162,7 @@
 
 /* Dark mode */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   body {
     color: #eee;
     background: #35363a;
@@ -140,4 +183,8 @@
   .modal-content {
     background-color: #eee !important;
   }
-}
+
+  .background-img {
+    filter: brightness(.85) contrast(1);
+  }
+} */
