@@ -110,4 +110,12 @@
   body a {
     color: #809fff;
   }
+
+  .navbar {
+    background-color: #ff3f38;
+  }
+
+  .navbar-light .navbar-brand {
+    color: #eee;
+  }
 }
