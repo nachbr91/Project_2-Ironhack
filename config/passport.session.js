@@ -15,7 +15,6 @@ module.exports = (app) => {
 
   passport.use(
     new LocalStrategy(
-      // { passReqToCallback: true }, // Needs to be commented, if not passport method doesn't works
       {
         usernameField: 'email', // by default
         passwordField: 'password', // by default
@@ -40,7 +39,7 @@ module.exports = (app) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // Middleware to change dinamically login/logout buttons
+  // Middleware to change dynamically login/logout buttons
   app.use((req, res, next) => {
     res.locals.isAuthenticated = req.isAuthenticated();
     next();

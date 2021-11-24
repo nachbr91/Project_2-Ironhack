@@ -98,7 +98,6 @@ router.post('/login', (req, res, next) => {
       if (err) {
         return next(err);
       }
-      console.log(req.session.passport.user)
       res.redirect('/user/profile');
     });
   })(req, res, next);

@@ -1,4 +1,27 @@
-<h2>Grand Prix</h2>
+<div class='container'>
+  <h2 class="allDrivers-title">Grand Prix</h2>
+  <div class='row row-cols-1 row-cols-md-3 g-4'>
+    {{#each showTracks}}
+      <div class='col'>
+        <img src='{{this.imageUrl}}' alt='{{this.name}} {{this.lastName}}' class="card-img-top" />
+        <div class='card-body text-center'>
+          <h5 class='card-title'><span class="driver-number">{{this.number}}</span> {{this.name}}
+            <span class='driver-lastName'>{{this.lastName}}</span></h5>
+          <form action='/grand-prix/{{this.id}}' method='get'>
+            <button
+              type='submit'
+              class='btn btn-primary'
+              data-toggle='modal'
+              data-target='#{{this.id}}'
+            >More info</button>
+          </form>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+{{!-- <h2>Grand Prix</h2>
 
 {{#each showTracks}}
 <ul>
@@ -6,4 +29,4 @@
   <img src="{{this.imageUrl}}" alt="{{this.name}}" /> 
   <a href="/grand-prix/{{this.id}}">See details</a>
 </ul>
-{{/each}}
+{{/each}} --}}
