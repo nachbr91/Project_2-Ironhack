@@ -66,7 +66,7 @@ router.post('/create', isLoggedIn, async (req, res) => {
 });
 
 // POST edit Grand Prix
-router.post('/:_id', async (req, res) => {
+router.post('/:_id', isLoggedIn, async (req, res) => {
   const {name, circuitName, laps, circuitLength, lapRecord, imageUrl} = req.body;
   try{
     const updateTrack = await Race.findByIdAndUpdate(req.params._id, {name, circuitName, laps, circuitLength, lapRecord, imageUrl}, {new: true});

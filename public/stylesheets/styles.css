@@ -1,12 +1,32 @@
-/* body {
-  font-style: ;
-} */
+@font-face {
+  font-family: formula1Regular;
+  src: url('/fonts/formula1-regular.ttf');
+}
+
+@font-face {
+  font-family: formula1Bold;
+  src: url('/fonts/formula1-bold.ttf');
+}
+
+body {
+  font-family: 'formula1Regular', 'formula1Bold', sans-serif;
+}
 
 /* Global */
 
+hr {
+  color: #000;
+  padding: 0.5px;
+}
+
 .navbar {
   background-color: rgb(225, 11, 15);
-  padding: 0.3rem 0;
+  padding: 0.4rem 0;
+}
+
+.navbar-brand {
+  font-family: formula1Bold;
+  padding-left: 25px;
 }
 
 .navbar-light .navbar-brand {
@@ -27,6 +47,12 @@
   margin-top: 25px;
 }
 
+.card-title {
+  font-size: 1.7rem;
+  text-align: center;
+  margin: 10px 0 12px 0;
+}
+
 .modal-header img {
   height: 300px;
   width: auto;
@@ -34,7 +60,13 @@
   margin: 0;
 }
 
-/* home */
+/* Log in modal */
+
+.login-button {
+  margin-top: 10px;
+}
+
+/* Home */
 
 .background-img {
   width: 100vw;
@@ -46,18 +78,28 @@
 }
 
 .container h1 {
-  color: #eee;
+  font-family: formula1Bold;
+  color: #fff;
+  padding-top: 45px;
 }
 
-footer{
+.container p {
+  font-family: formula1Bold;
+  color: #fff;
+  font-size: 1.5rem;
+  text-shadow: 0.5px 0 #000;
+}
+
+footer {
   background-color: #35363a;
+  height: 10vh;
 }
 
 .footer {
   display: flex;
   justify-content: center;
   height: 23px;
-  padding-top: 5px;
+  padding-top: 6px;
 }
 
 .rrss {
@@ -67,7 +109,7 @@ footer{
 
 .footer h2 {
   font-size: 1.2rem;
-  color:rgb(255, 255, 255);
+  color:#fff;
 }
 
 .footer-logos img {
@@ -76,12 +118,30 @@ footer{
   padding-right: 20px;
 } 
 
-/* allDrivers */
+@media (max-width: 1000px) {
+  .navbar-brand {
+    padding-left: 0;
+  }
+  
+  .container h1 {
+    text-align: center;
+    padding-top: 45px;
+    text-shadow: 0.5px 0 #000;
+  }
 
-.allDrivers-title {
-  text-align: center;
-  margin: 10px 0 12px 0;
+  .container p {
+    text-align: center;
+    font-size: 1.3rem;
+    text-shadow: 0.5px 0 #000;
+    padding-top: 25px;
+  }
+
+  .footer h2 {
+    font-size: 1.1rem;
+  }
 }
+
+/* allDrivers */
 
 .container {
   margin-bottom: 20px;
@@ -105,20 +165,24 @@ footer{
   object-fit: cover;
 }
 
-.card-title {
-  font-size: 1.8rem;
-}
-
 .driver-number {
   color: rgb(128, 128, 128);
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 700;
 }
 
+.driver-title {
+  font-size: 1.5rem;
+}
+
 .driver-lastName {
-  font-size: 1.8rem;
+  font-family: formula1Bold;
+  font-size: 1.5rem;
   text-transform: uppercase;
-  font-weight: 800;
+}
+
+.col button {
+  margin-top: 10px;
 }
 
 .btn-primary {
@@ -160,8 +224,18 @@ footer{
   margin-top: 10px;
 }
 
-/* Dark mode */
+/* allTeams */
 
+.team-img img {
+  /* height: fit-content; */
+  object-fit: contain;
+}
+
+
+
+/* ----- Media queries ----- */
+
+/* Drak mode */
 /* @media (prefers-color-scheme: dark) {
   body {
     color: #eee;
