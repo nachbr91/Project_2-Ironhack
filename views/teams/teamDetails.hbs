@@ -1,10 +1,39 @@
-<form action='/teams/{{id}}/edit' method='GET'>
-  <button type='submit'>Edit team</button>
-</form>
-<form action='/teams' method='GET'>
-  <button type='submit'>Go back</button>
-</form>
-<h2>Team details:</h2>
+<div class='container team-details'>
+  <div class='card mb-3'>
+    <img src='{{this.imageUrl}}' class='card-img-top' alt='{{this.teamName}}' />
+    <div class='card-body'>
+      <h5 class='card-title team-details-title'>{{this.teamName}}</h5>
+      <p><span>Base:</span> {{base}}</p>
+      <p><span>Team Chief:</span> {{teamChief}}</p>
+      <p><span>Drivers:</span></p>
+      <ul>
+        {{#if drivers}}
+          {{#each drivers}}
+            <li>{{this.name}} {{this.lastName}}</li>
+          {{/each}}
+        {{/if}}
+      </ul>
+      <p><span>First Team entry:</span> {{firstTeamEntry}}</p>
+      <p><span>World Championships:</span> {{worldChampionships}}</p>
+      <div class='driverDetails-buttons'>
+        <form action='/teams/{{id}}/edit' method='get'>
+          <button class='btn btn-primary' type='submit'>Edit team</button>
+        </form>
+        <form action='/teams/{{id}}/delete' method='post'>
+          <button class='btn btn-danger' type='submit'>Delete team</button>
+        </form>
+      </div>
+      <div class='go-back-button'>
+        <form action='/teams' method='get'>
+          <button class='btn btn-secondary go-back' type='submit'>Return to
+            teams page</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- <h2>Team details:</h2>
 <p>{{this.teamName}}</p>
 <p>Base: {{base}}</p>
 <p>Team Chief: {{teamChief}}</p>
@@ -23,3 +52,9 @@
 <form action='/teams/{{id}}/delete' method='post'>
   <button type='submit'>Delete team</button>
 </form>
+<form action='/teams/{{id}}/edit' method='GET'>
+  <button type='submit'>Edit team</button>
+</form>
+<form action='/teams' method='GET'>
+  <button type='submit'>Go back</button>
+</form> --}}

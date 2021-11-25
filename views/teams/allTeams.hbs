@@ -1,31 +1,11 @@
-{{!-- 
-<div class="container">
-    <h2 class="allDrivers-title">Formula 1 Teams</h2>
-  {{#each showTeams}}
-  <div class="card mb-3">
-  <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.teamName}}">
-    <div class="card-body">
-      <h5 class="card-title">{{this.teamName}}</h5>
-      <form action='/teams/{{this.id}}' method='get'>
-        <button
-          type='submit'
-          class='btn btn-primary'
-          data-toggle='modal'
-          data-target='#{{this.id}}'
-        >More info</button>
-      </form>
-    </div>
-  </div>
-  {{/each}}
-</div> --}}
-
-<div class='container'>
+<main>
+  <div class='container'>
   <h2 class="card-title">Formula 1 Teams</h2>
   <div class='row row-cols-1 row-cols-md-3 g-4'>
     {{#each showTeams}}
       <div class='col team-img'>
         <img src='{{this.imageUrl}}' alt='{{this.name}} {{this.lastName}}' class="card-img-top" />
-        <hr>
+        {{!-- <hr> --}}
         <div class='card-body text-center'>
           <h5 class='card-title'>{{this.teamName}}</h5>
           <form action='/teams/{{this.id}}' method='get'>
@@ -41,3 +21,4 @@
     {{/each}}
   </div>
 </div>
+</main>

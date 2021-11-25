@@ -83,16 +83,15 @@ hr {
   padding-top: 45px;
 }
 
-.container p {
+.home-page p {
   font-family: formula1Bold;
   color: #fff;
   font-size: 1.5rem;
-  text-shadow: 0.5px 0 #000;
 }
 
 footer {
   background-color: #35363a;
-  height: 10vh;
+  height: 11vh;
 }
 
 .footer {
@@ -224,14 +223,31 @@ footer {
   margin-top: 10px;
 }
 
-/* allTeams */
+/* allTeams page */
 
 .team-img img {
   /* height: fit-content; */
   object-fit: contain;
 }
 
+@media (max-width: 1000px) {
+  .team-img img {
+    height: fit-content;
+  }
+}
 
+/* teamDetails page */
+
+
+
+.team-details h5 {
+  font-family: formula1Bold;
+  color:#000;
+}
+
+.team-details span {
+  font-family: formula1Bold;
+}
 
 /* ----- Media queries ----- */
 
@@ -260,5 +276,10 @@ footer {
 
   .background-img {
     filter: brightness(.85) contrast(1);
+  }
+
+  .team-img img {
+    filter: brightness(.75) contrast(1);
+    height: fit-content;
   }
 } */
