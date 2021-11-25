@@ -1,5 +1,4 @@
 // DARK MODE
-
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
 if (prefersDarkScheme.matches) {
@@ -7,3 +6,5 @@ if (prefersDarkScheme.matches) {
 } else {
   document.body.classList.remove('dark-theme');
 }
+
+
