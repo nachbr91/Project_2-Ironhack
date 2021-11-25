@@ -6,7 +6,7 @@ const passport = require('passport');
 // Model
 const User = require('../models/User.model');
 
-// // Middleware for route guard
+// Middleware for route guard
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard');
 
 //GET sign up
@@ -33,13 +33,13 @@ router.post('/signup', async (req, res, next) => {
 
   // To check that user has filled all inputs
   if (!username || !password || !email || !repeatPassword) {
-    res.render('signup', { errorMsg: 'Please, fill all inputs' });
+    res.render('home', { errorMsg: 'Please, fill all inputs' });
     return;
   }
 
   // To compare both passwords
   if (password !== repeatPassword) {
-    res.render('signup', { errorMsg: 'Passwords do not match' });
+    res.render('home', { errorMsg: 'Passwords do not match. Please, try again.' });
     return;
   }
 
@@ -48,7 +48,7 @@ router.post('/signup', async (req, res, next) => {
     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password) ===
     false
   ) {
-    res.render('signup', {
+    res.render('home', {
       errorMsg:
         'Your password should be a combination of at least 8 numbers, lowercase and uppercase letters',
     });
@@ -58,13 +58,13 @@ router.post('/signup', async (req, res, next) => {
   // To check if user already exists
   const existingUser = await User.findOne({ username });
   if (existingUser) {
-    res.render('signup', { errorMsg: 'This user already has an account' });
+    res.render('home', { errorMsg: 'This user already has an account' });
     return;
   }
 
   // To check if the email is correct
   if (/\S+@\S+\.\S+/.test(email) === false) {
-    res.render('signup', { errorMsg: 'Please, enter a valid email' });
+    res.render('home', { errorMsg: 'Please, enter a valid email' });
     return;
   }
 
@@ -76,7 +76,7 @@ router.post('/signup', async (req, res, next) => {
       password: hashedPassword,
       email,
     });
-    res.redirect('login');
+    res.redirect('/');
   } catch (err) {
     console.log('ERROR: ', err);
   }
@@ -90,7 +90,7 @@ router.post('/login', (req, res, next) => {
     }
 
     if (!theUser) {
-      res.render('login', { errorMsg: 'Incorrect username or password' });
+      res.render('home', { errorMsg: 'Incorrect username or password. Try again.' });
       return;
     }
 

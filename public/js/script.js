@@ -1,17 +1,9 @@
-// Variable
-// showFlashMessage((element) => {
-//   const event = new CustomEvent('showFlashMessage');
-//   element.dispatchEvent(event);
-// });
+// DARK MODE
 
-// const flashMessage = document.getElementsByClassName('error-flash-message');
-// show
-
-
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
 if (prefersDarkScheme.matches) {
-  document.body.classList.add("dark-theme");
+  document.body.classList.add('dark-theme');
 } else {
-  document.body.classList.remove("dark-theme");
+  document.body.classList.remove('dark-theme');
 }
