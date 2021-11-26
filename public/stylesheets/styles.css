@@ -210,7 +210,7 @@ footer {
 }
 
 .card-img-top {
-  width: 95% !important;
+  height: 400px;
   object-fit: cover;
 }
 
@@ -278,16 +278,11 @@ footer {
 
 /* allTeams page */
 
-.team-img {
-  text-align: center;
-}
-
 .team-img img {
   object-fit: contain;
 }
 
 .grand-prix-img img {
-  /* object-fit: contain; */
   object-fit: contain;
 }
 
