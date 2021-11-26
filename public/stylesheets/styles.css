@@ -389,7 +389,7 @@ footer {
 
 /* Drak mode */
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   body {
     color: #eee;
     background: #35363a;
@@ -496,4 +496,4 @@ footer {
     font-size: 1.3rem;
     color: #000;
   }
-} */
+}
