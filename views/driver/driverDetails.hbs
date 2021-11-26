@@ -1,8 +1,10 @@
-<div class="driver-details-card">
-  <div class="card-details" style="width: 22rem;">
-    <img src="{{imageUrl}}" class="card-img-top" alt="{{name}} {{lastName}}">
-    <div class="card-body">
-      <h5 class="card-title"><span class="driver-number">{{number}}</span> {{name}} <span class="driver-lastName">{{lastName}}</span></h5>
+<div class='driver-details-card'>
+  <div class='card-details' style='width: 22rem;'>
+    <img src='{{imageUrl}}' class='card-img-top' alt='{{name}} {{lastName}}' />
+    <div class='card-body'>
+      <h5 class='card-title'><span class='driver-number'>{{number}}</span>
+        {{name}}
+        <span class='driver-lastName'>{{lastName}}</span></h5>
       <p><span>Country</span>: {{country}}</p>
       {{#if team}}
         {{#each team}}
@@ -12,19 +14,20 @@
       <p><span>Podiums</span>: {{podiums}}</p>
       <p><span>Won Races</span>: {{wonRaces}}</p>
       <p><span>World Championships</span>: {{worldChampionships}}</p>
-      <div class="driverDetails-buttons">
-        <form action="/drivers/{{id}}/edit" method="get">
-          <button class="btn btn-primary" type="submit">Edit driver</button>
+      <div class='driverDetails-buttons'>
+        <form action='/drivers/{{id}}/edit' method='get'>
+          <button class='btn btn-primary' type='submit'>Edit driver</button>
         </form>
-        <form action="/drivers/{{id}}/delete" method="post">
-          <button class="btn btn-danger" type="submit">Delete driver</button>
+        <form action='/drivers/{{id}}/delete' method='post'>
+          <button class='btn btn-danger' type='submit'>Delete driver</button>
         </form>
       </div>
-      <div class="go-back-button driverDetails-goback-button">
-        <form action="/drivers/allDrivers" method="get">
-            <button class="btn btn-secondary go-back" type="submit">Return to drivers page</button>
+      <div class='go-back-button driverDetails-goback-button'>
+        <form action='/drivers/allDrivers' method='get'>
+          <button class='btn btn-secondary go-back' type='submit'>Return to
+            drivers page</button>
         </form>
       </div>
     </div>
-  </div>  
+  </div>
 </div>

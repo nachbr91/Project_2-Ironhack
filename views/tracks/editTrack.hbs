@@ -1,24 +1,16 @@
 <h2>Edit Grand Prix details</h2>
 <form action='/grand-prix/{{editTrack.id}}' method='post'>
-
   <label>Grand Prix name:</label>
-  <input type='text' name='name' value="{{editTrack.name}}" />
-
+  <input type='text' name='name' value='{{editTrack.name}}' />
   <label>Circuit name:</label>
-  <input type='text' name='circuitName' value="{{editTrack.circuitName}}" />
-
+  <input type='text' name='circuitName' value='{{editTrack.circuitName}}' />
   <label>Laps:</label>
-  <input type='number' name='laps' value="{{editTrack.laps}}" />
-
+  <input type='number' name='laps' value='{{editTrack.laps}}' />
   <label>Circuit Length:</label>
-  <input type='text' name='circuitLength' value="{{editTrack.circuitLength}}" />
-
+  <input type='text' name='circuitLength' value='{{editTrack.circuitLength}}' />
   <label>Lap record:</label>
-  <input type='text' name='lapRecord' value="{{editTrack.lapRecord}}" />
-
+  <input type='text' name='lapRecord' value='{{editTrack.lapRecord}}' />
   <label>Image:</label>
-  <input type='text' name='imageUrl' value="{{editTrack.imageUrl}}" />
-
-  <button type="submit">Update!</button>
-
+  <input type='text' name='imageUrl' value='{{editTrack.imageUrl}}' />
+  <button type='submit'>Update!</button>
 </form>

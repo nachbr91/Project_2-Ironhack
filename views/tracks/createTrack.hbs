@@ -1,29 +1,23 @@
 <h1>Add a new Grand Prix:</h1>
-
 {{#if errorMsg}}
   <p>{{errorMsg}}</p>
 {{/if}}
-
 <form action='/grand-prix/create' method='post'>
-
   <label>Grand Prix name:</label>
   <input type='text' name='name' placeholder='Grand Prix Name' />
-
   <label>Circuit name:</label>
   <input type='text' name='circuitName' placeholder='Circuit name' />
-
   <label>Laps:</label>
   <input type='number' name='laps' placeholder='53' />
-
   <label>Circuit Length:</label>
   <input type='string' name='circuitLength' placeholder='4,573 km' />
-  
   <label>Lap record:</label>
-  <input type='string' name='lapRecord' placeholder='1:23.645 by Michael Schumacher (2001)' />
-
+  <input
+    type='string'
+    name='lapRecord'
+    placeholder='1:23.645 by Michael Schumacher (2001)'
+  />
   <label>Image:</label>
-  <input type='text' name='imageUrl' placeholder="Circuit image" />
-
-  <button type="submit">Create Grand Prix</button>
-  
+  <input type='text' name='imageUrl' placeholder='Circuit image' />
+  <button type='submit'>Create Grand Prix</button>
 </form>

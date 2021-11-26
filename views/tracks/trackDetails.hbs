@@ -1,15 +1,26 @@
-<h2>Grand Prix details:</h2>
-<p>{{name}}</p>
-<p>Circuit name: {{circuitName}}</p>
-<p>Laps: {{laps}}</p>
-<p>Circuit Length: {{circuitLength}}</p>
-<p>Lap record: {{lapRecord}}</p>
-<img src="{{imageUrl}}" alt="{{circuitName}}" />
-
-<form action="/grand-prix/{{id}}/delete" method="post">
-<button type="submit">Delete Grand Prix</button>
-</form>
-
-<form action="/grand-prix/{{id}}/edit" method="get">
-<button type="submit">Edit Grand Prix</button>
-</form>
+<div class='container team-details'>
+  <div class='card mb-3'>
+    <img src='{{imageUrl}}' class='card-img-top' alt='{{circuitName}}' />
+    <div class='card-body'>
+      <h5 class='card-title team-details-title'>{{name}}</h5>
+      <p><span>Circuit name:</span> {{circuitName}}</p>
+      <p><span>Laps:</span> {{laps}}</p>
+      <p><span>Circuit Length:</span> {{circuitLength}}</p>
+      <p><span>Lap record:</span> {{lapRecord}}</p>
+      <div class='teamDetails-buttons'>
+        <form action='/grand-prix/{{id}}/edit' method='get'>
+          <button class='btn btn-primary' type='submit'>Edit Grand Prix</button>
+        </form>
+        <form action='/grand-prix/{{id}}/delete' method='post'>
+          <button class='btn btn-danger' type='submit'>Delete Grand Prix</button>
+        </form>
+      </div>
+      <div class='go-back-button teamDetails-goback-button'>
+        <form action='/grand-prix' method='get'>
+          <button class='btn btn-secondary go-back' type='submit'>Return to
+            Grand Prix page</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

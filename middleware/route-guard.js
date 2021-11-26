@@ -9,14 +9,6 @@ const isLoggedIn = (req, res, next) => {
   }
 };
 
-const isLoggedOut = (req, res, next) => {
-  if (req.session.passport) {
-    return res.redirect('/');
-  }
-  next();
-};
-
 module.exports = {
   isLoggedIn,
-  isLoggedOut,
 };

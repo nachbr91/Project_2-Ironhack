@@ -6,5 +6,3 @@ if (prefersDarkScheme.matches) {
 } else {
   document.body.classList.remove('dark-theme');
 }
-
-

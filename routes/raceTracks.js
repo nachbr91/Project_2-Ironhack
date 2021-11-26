@@ -5,10 +5,10 @@ const router = require('express').Router();
 const Race = require('../models/Race.model');
 
 // Middleware for route guard
-const {isLoggedIn} = require('../middleware/route-guard');
+const { isLoggedIn } = require('../middleware/route-guard');
 
 // GET all Grand Prix page
-router.get('/', isLoggedIn,  async (req, res) => {
+router.get('/', isLoggedIn, async (req, res) => {
   try {
     const showTracks = await Race.find();
     res.render('tracks/allTracks', {
@@ -38,17 +38,20 @@ router.get('/:_id', isLoggedIn, async (req, res) => {
 router.get('/:id/edit', isLoggedIn, async (req, res) => {
   try {
     const editTrack = await Race.findById(req.params.id);
-    res.render('tracks/editTrack', {editTrack});
+    res.render('tracks/editTrack', { editTrack });
   } catch (err) {
-    console.log('ERROR: ', err)
+    console.log('ERROR: ', err);
   }
-})
+});
 
 // POST create a new Grand Prix
 router.post('/create', isLoggedIn, async (req, res) => {
-  const {name, circuitName, laps, circuitLength, lapRecord, imageUrl} = req.body;
-  if (!name, !circuitName, !laps, !circuitLength, !lapRecord, !imageUrl) {
-    res.render('tracks/createTrack', {errorMsg: 'You need to fill all inputs'});
+  const { name, circuitName, laps, circuitLength, lapRecord, imageUrl } =
+    req.body;
+  if ((!name, !circuitName, !laps, !circuitLength, !lapRecord, !imageUrl)) {
+    res.render('tracks/createTrack', {
+      errorMsg: 'You need to fill all inputs',
+    });
   }
   try {
     const createTrack = await Race.create({
@@ -67,10 +70,15 @@ router.post('/create', isLoggedIn, async (req, res) => {
 
 // POST edit Grand Prix
 router.post('/:_id', isLoggedIn, async (req, res) => {
-  const {name, circuitName, laps, circuitLength, lapRecord, imageUrl} = req.body;
-  try{
-    const updateTrack = await Race.findByIdAndUpdate(req.params._id, {name, circuitName, laps, circuitLength, lapRecord, imageUrl}, {new: true});
-    res.redirect(`${req.params._id}`) // Redirect to Grand Prix details
+  const { name, circuitName, laps, circuitLength, lapRecord, imageUrl } =
+    req.body;
+  try {
+    const updateTrack = await Race.findByIdAndUpdate(
+      req.params._id,
+      { name, circuitName, laps, circuitLength, lapRecord, imageUrl },
+      { new: true }
+    );
+    res.redirect(`${req.params._id}`); // Redirect to Grand Prix details
   } catch (err) {
     console.log('ERROR: ', err);
   }

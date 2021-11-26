@@ -16,7 +16,7 @@ router.get('/', isLoggedIn, async (req, res, next) => {
       showTeams: showTeams,
     });
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 });
 
@@ -26,7 +26,7 @@ router.get('/create', isLoggedIn, async (req, res, next) => {
     const loadDrivers = await Driver.find();
     res.render('teams/createTeam', {
       loadDrivers: loadDrivers,
-    })
+    });
   } catch (err) {
     console.log('ERROR: ', err);
   }
@@ -35,7 +35,9 @@ router.get('/create', isLoggedIn, async (req, res, next) => {
 // GET teams details
 router.get('/:_id', isLoggedIn, async (req, res, next) => {
   try {
-    const showTeamDetails = await Team.findById(req.params._id).populate('drivers');
+    const showTeamDetails = await Team.findById(req.params._id).populate(
+      'drivers'
+    );
     res.render('teams/teamDetails', showTeamDetails);
   } catch (err) {
     console.log('ERROR: ', err);
@@ -52,16 +54,32 @@ router.get('/:id/edit', isLoggedIn, async (req, res, next) => {
   try {
     const editTeam = await Team.findById(req.params.id);
     const editDriver = await Driver.find();
-    res.render('teams/editTeams', {editTeam, editDriver});
+    res.render('teams/editTeams', { editTeam, editDriver });
   } catch (err) {
-    console.log('Error:', err)
-  };
+    console.log('Error:', err);
+  }
 });
 
 //POST create new team
 router.post('/create', isLoggedIn, async (req, res, next) => {
-  const { teamName, base, teamChief, firstTeamEntry, worldChampionships, imageUrl, drivers } = req.body;
-  if (!teamName || !base || !teamChief || !firstTeamEntry || !worldChampionships || !imageUrl || !drivers) {
+  const {
+    teamName,
+    base,
+    teamChief,
+    firstTeamEntry,
+    worldChampionships,
+    imageUrl,
+    drivers,
+  } = req.body;
+  if (
+    !teamName ||
+    !base ||
+    !teamChief ||
+    !firstTeamEntry ||
+    !worldChampionships ||
+    !imageUrl ||
+    !drivers
+  ) {
     res.render('teams/createTeam', { errorMsg: 'You need to fill all inputs' });
     return;
   }
@@ -77,19 +95,39 @@ router.post('/create', isLoggedIn, async (req, res, next) => {
     });
     res.redirect('/teams');
   } catch (err) {
-    console.log('ERROR: ', err)
+    console.log('ERROR: ', err);
   }
 });
 
 // POST edit team
 router.post('/:_id', isLoggedIn, async (req, res, next) => {
-  const {teamName, base, teamChief, firstTeamEntry, worldChampionships, imageUrl, drivers} = req.body;
+  const {
+    teamName,
+    base,
+    teamChief,
+    firstTeamEntry,
+    worldChampionships,
+    imageUrl,
+    drivers,
+  } = req.body;
   try {
-    const updateTeam = await Team.findByIdAndUpdate(req.params._id, {teamName, base, teamChief, firstTeamEntry, worldChampionships, imageUrl, drivers}, {new: true});
+    const updateTeam = await Team.findByIdAndUpdate(
+      req.params._id,
+      {
+        teamName,
+        base,
+        teamChief,
+        firstTeamEntry,
+        worldChampionships,
+        imageUrl,
+        drivers,
+      },
+      { new: true }
+    );
     res.redirect(`${req.params._id}`); // Redirect to team details
   } catch (err) {
     console.log('Error:', err);
-  };
+  }
 });
 
 // POST delete team

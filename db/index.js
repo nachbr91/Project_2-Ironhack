@@ -5,11 +5,11 @@ const connectToMongo = async () => {
   try {
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
-    console.log('Connected to Mongo')
+    console.log('Connected to Mongo');
   } catch (err) {
     console.log('Error connecting to mongo: ', err);
-  };
+  }
 };
 connectToMongo();

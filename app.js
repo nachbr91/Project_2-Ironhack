@@ -1,4 +1,4 @@
- // Gets access to the environments variables/settings
+// Gets access to the environments variables/settings
 require('dotenv/config');
 
 // Connects to DB

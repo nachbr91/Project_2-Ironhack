@@ -20,7 +20,7 @@ module.exports = (app) => {
         passwordField: 'password', // by default
       },
       (email, password, done) => {
-        User.findOne({ email }) 
+        User.findOne({ email })
           .then((user) => {
             if (!user) {
               return done(null, false, { errorMsg: 'Incorrect email' });
