@@ -279,10 +279,12 @@ footer {
 /* allTeams page */
 
 .team-img img {
+  /* height: fit-content; */
   object-fit: contain;
 }
 
 .grand-prix-img img {
+  /* object-fit: contain; */
   object-fit: contain;
 }
 
@@ -397,7 +399,7 @@ footer {
 
   body a {
     color: #809fff;
-  }
+  } */
 
   .errorMsg {
     display: flex;
@@ -466,7 +468,6 @@ footer {
 
   .team-img img {
     filter: brightness(0.75) contrast(1);
-    height: fit-content;
   }
 
   .card {
