@@ -1,37 +1,115 @@
-<h2>Edit driver details</h2>
-<form action='/drivers/{{editDriver.id}}' method='post'>
-
-  <label>Name:</label>
-  <input type='text' name='name' value="{{editDriver.name}}" />
-
-  <label>Last Name:</label>
-  <input type='text' name='lastName' value="{{editDriver.lastName}}" />
-
-  <label>Country:</label>
-  <input type='text' name='country' value="{{editDriver.country}}" />
-
-  <label>Number:</label>
-  <input type='number' name='number' value="{{editDriver.number}}" />
-
-  <label>Team:</label>
-    <select name='team' id='teams'>
-    {{#each editTeam}}
-      <option value='{{this.id}}'>{{this.teamName}}</option>
-    {{/each}}
-  </select>
-
-  <label>Podiums:</label>
-  <input type='number' name='podiums' value="{{editDriver.podiums}}" />
-
-  <label>Won races:</label>
-  <input type='number' name='wonRaces' value="{{editDriver.wonRaces}}" />
-
-  <label>World Championships:</label>
-  <input type='number' name='worldChampionships' value="{{editDriver.worldChampionships}}" />
-
-  <label>Image:</label>
-  <input type='text' name='imageUrl' value="{{editDriver.imageUrl}}" />
-
-  <button type="submit">Update!</button>
-
-</form>
+<div class='container edit-driver'>
+  <h2>Edit driver details</h2>
+  <form action='/drivers/{{editDriver.id}}' method='post'>
+    <div class='row mb-3'>
+      <label for='inputName' class='col-sm-2 col-form-label'>Name</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='name'
+          class='form-control'
+          id='inputName'
+          value='{{editDriver.name}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputLastName' class='col-sm-2 col-form-label'>Last Name</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='lastName'
+          class='form-control'
+          id='inputLastName'
+          value='{{editDriver.lastName}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputCountry' class='col-sm-2 col-form-label'>Country</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='country'
+          class='form-control'
+          id='inputCountry'
+          value='{{editDriver.country}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputNumber' class='col-sm-2 col-form-label'>Number</label>
+      <div class='col-sm-10'>
+        <input
+          type='number'
+          name='number'
+          class='form-control'
+          id='inputNumber'
+          value='{{editDriver.number}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputPodiums' class='col-sm-2 col-form-label'>Podiums</label>
+      <div class='col-sm-10'>
+        <input
+          type='number'
+          name='podiums'
+          class='form-control'
+          id='inputPodiums'
+          value='{{editDriver.podiums}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputWonRaces' class='col-sm-2 col-form-label'>Won Races</label>
+      <div class='col-sm-10'>
+        <input
+          type='number'
+          name='wonRaces'
+          class='form-control'
+          id='inputWonRaces'
+          value='{{editDriver.wonRaces}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputWorldChampionships' class='col-sm-2 col-form-label'>World
+        Championships</label>
+      <div class='col-sm-10'>
+        <input
+          type='number'
+          name='worldChampionships'
+          class='form-control'
+          id='inputWorldChampionships'
+          value='{{editDriver.worldChampionships}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputImage' class='col-sm-2 col-form-label'>Image</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='imageUrl'
+          class='form-control'
+          id='inputinputImageWorldChampionships'
+          value='{{editDriver.imageUrl}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputTeam' class='col-sm-2 col-form-label'>Team</label>
+      <div class='col-sm-10'>
+        <select class='form-select' name='team' id='inputTeam'>
+          {{#each editTeam}}
+            <option value='{{this.id}}'>{{this.teamName}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class='edit-driver-button'>
+      <button type='submit' class='btn btn-primary edit-button'>Edit</button>
+    </div>
+  </form>
+</div>

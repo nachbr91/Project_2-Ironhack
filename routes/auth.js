@@ -98,7 +98,7 @@ router.post('/login', (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/user/profile');
+      res.redirect('/');
     });
   })(req, res, next);
 });

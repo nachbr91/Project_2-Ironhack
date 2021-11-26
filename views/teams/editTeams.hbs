@@ -1,31 +1,92 @@
-<h2>Edit team details</h2>
-<form action='/teams/{{editTeam.id}}' method='post'>
-
-  <label>Team name:</label>
-  <input type='text' name='teamName' value="{{editTeam.teamName}}" />
-
-  <label>Base:</label>
-  <input type='text' name='base' value="{{editTeam.base}}" />
-
-  <label>Team Chief:</label>
-  <input type='text' name='teamChief' value="{{editTeam.teamChief}}" />
-
-  <label>Drivers:</label>
-  <select name='drivers' id='teams' multiple>
-    {{#each editDriver}}
-      <option value='{{this.id}}'>{{this.name}} {{this.lastName}}</option>
-    {{/each}}
-  </select>
-
-  <label>First team entry:</label>
-  <input type='number' name='firstTeamEntry' value="{{editTeam.firstTeamEntry}}" />
-
-  <label>World Championships:</label>
-  <input type='number' name='worldChampionships' value="{{editTeam.worldChampionships}}" />
-
-  <label>Image:</label>
-  <input type='text' name='imageUrl' value="{{editTeam.imageUrl}}" />
-
-  <button type="submit">Update!</button>
-
-</form>
+<div class='container edit-driver'>
+  <h2>Edit team details</h2>
+  <form action='/teams/{{editTeam.id}}' method='post'>
+    <div class='row mb-3'>
+      <label for='inputTeamName' class='col-sm-2 col-form-label'>Team name</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='teamName'
+          class='form-control'
+          id='inputTeamName'
+          value='{{editTeam.teamName}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputBase' class='col-sm-2 col-form-label'>Base</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='base'
+          class='form-control'
+          id='inputBase'
+          value='{{editTeam.base}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputTeamChief' class='col-sm-2 col-form-label'>Team Chief</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='teamChief'
+          class='form-control'
+          id='inputTeamChief'
+          value='{{editTeam.teamChief}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputTeamEntry' class='col-sm-2 col-form-label'>First team
+        entry</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='firstTeamEntry'
+          class='form-control'
+          id='inputTeamEntry'
+          value='{{editTeam.firstTeamEntry}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputWorldChampionships' class='col-sm-2 col-form-label'>World
+        Championships</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='worldChampionships'
+          class='form-control'
+          id='inputWorldChampionships'
+          value='{{editTeam.worldChampionships}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputImageUrl' class='col-sm-2 col-form-label'>Image</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          name='imageUrl'
+          class='form-control'
+          id='inputImageUrl'
+          value='{{editTeam.imageUrl}}'
+        />
+      </div>
+    </div>
+    <div class='row mb-3'>
+      <label for='inputDrivers' class='col-sm-2 col-form-label'>Drivers:</label>
+      <div class='col-sm-10'>
+        <select class='form-select' name='drivers' id='inputDrivers' multiple>
+          {{#each editDriver}}
+            <option value='{{this.id}}'>{{this.name}} {{this.lastName}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class='edit-driver-button'>
+      <button type='submit' class='btn btn-primary edit-button'>Edit!</button>
+    </div>
+  </form>
+</div>

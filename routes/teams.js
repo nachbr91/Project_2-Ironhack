@@ -82,7 +82,7 @@ router.post('/create', isLoggedIn, async (req, res, next) => {
 });
 
 // POST edit team
-router.post('/:_id', async (req, res, next) => {
+router.post('/:_id', isLoggedIn, async (req, res, next) => {
   const {teamName, base, teamChief, firstTeamEntry, worldChampionships, imageUrl, drivers} = req.body;
   try {
     const updateTeam = await Team.findByIdAndUpdate(req.params._id, {teamName, base, teamChief, firstTeamEntry, worldChampionships, imageUrl, drivers}, {new: true});
