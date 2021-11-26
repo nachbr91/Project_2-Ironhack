@@ -487,9 +487,8 @@ footer {
   }
 
   .profile-img h2 {
-    font-size: 2.2rem;
-    color: #eee;
-    padding-left: 30px;
+    color: #fff;
+    text-shadow: 1px 0 #000;
   }
 
   .profile-img p {
